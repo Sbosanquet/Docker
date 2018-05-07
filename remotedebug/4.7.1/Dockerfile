@@ -13,7 +13,7 @@ FROM microsoft/dotnet-framework:4.7.1-windowsservercore-1709
 # Set image label information
 LABEL author="Simon Bosanquet" \
       version="1.0" \
-      description="This is a .NET 4.7.1 image built on top of windows server core and has msvsmon built in."
+      description="This is a .NET 4.7.1 image built on top of windows server core and has VS2017 x64 msvsmon.exe built in."
 
  # Use powershell rather than cmd.exe as the shell
 SHELL [ "powershell", "-NoProfile" ]
@@ -43,7 +43,7 @@ EXPOSE 4020 4021
 #
 # Note: the debugger security is open
 CMD """"& {Push-Location '/Program Files/Microsoft Visual Studio 15.0/Common7/IDE/Remote Debugger/x64';\
-            & '.\msvsmon.exe' /nostatus /silent /nosecuritywarn /nofirewallwarn /noclrwarn /noauth /anyuser /port 4020;\
+            & '.\msvsmon.exe' /nostatus /silent /nosecuritywarn /nofirewallwarn /noclrwarn /timeout:2147483646 /noauth /anyuser;\
             Pop-Location;\
             }"""" 
 ENTRYPOINT [ "powershell.exe", "-NoProfile", "-NoLogo", "-NoExit", "-Command" ]
