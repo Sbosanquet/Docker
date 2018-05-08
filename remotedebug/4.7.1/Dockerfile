@@ -7,6 +7,10 @@
 # NOTE: This should not be used on a production system due to the debugger security!!
 #
 
+# Define Arguments.  These are overridden in the docker-compose.yml
+ARG DEBUG_PORT_1
+ARG DEBUG_PORT_2
+
 # Get Base image
 FROM microsoft/dotnet-framework:4.7.1-windowsservercore-1709
 
@@ -35,9 +39,9 @@ RUN Remove-Item .\setup_x64.exe
 # Set the working directory back to the root
 WORKDIR /
 
-# Open network ports
+# Open network ports for Visual Studio (See: https://docs.microsoft.com/en-us/visualstudio/debugger/remote-debugger-port-assignments)
 #  - private only
-EXPOSE 4020 4021
+EXPOSE $DEBUG_PORT_1 $DEBUG_PORT_2
 
 # run the visual studio remote debugger and then set the command prompt back to the root
 #

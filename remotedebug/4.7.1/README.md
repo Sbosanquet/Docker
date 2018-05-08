@@ -2,7 +2,11 @@
 
 ## **Building the image**
 
-To build the image execute the following command:
+The preferred way of building the image is using the docker compose file. Execute the following command:
+
+    docker-compose build
+
+A manual build can be performed using:
 
     docker build --rm -t sbosanquet/dotnet-framework-debug:4.7.1 .
 
@@ -10,9 +14,7 @@ To build the image execute the following command:
 
 To run the image execute the following command:
 
-    docker run --interactive --rm -t sbosanquet/dotnet-framework-debug:4.7.1
-
-This depends on whether it has been built locally or pulled from docker.
+    docker run --interactive --rm -p 4022:4022/tcp -p 4023:4023/tcp -t sbosanquet/dotnet-framework-debug:4.7.1
 
 ## **Pushing the image**
 

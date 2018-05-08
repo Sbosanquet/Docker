@@ -1,0 +1,13 @@
+version: "3"
+services:
+  dotnet-framework-debug:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        DEBUG_PORT_1: 4022/tcp
+        DEBUG_PORT_2: 4023/tcp
+    image: sbosanquet/dotnet-framework-debug:4.7.1
+    ports:
+      - "4022:4022/tcp"
+      - "4023:4023/tcp"
