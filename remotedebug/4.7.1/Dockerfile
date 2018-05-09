@@ -36,6 +36,11 @@ RUN & .\setup_x64.exe /install /quiet
 # Clean up
 RUN Remove-Item .\setup_x64.exe
 
+# Update powershell help to provide offline help.  
+# Clear the error afterwards as there is usually one or more missing help files and
+# it will break the image build.
+RUN Update-Help -Force -ErrorAction SilentlyContinue; $error.clear();
+
 # Set the working directory back to the root
 WORKDIR /
 
