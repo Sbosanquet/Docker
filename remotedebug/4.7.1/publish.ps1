@@ -18,5 +18,5 @@ try
 }
 catch {
     $ErrorMessage = $_.Exception.Message
-    Write-Host "Exception occured whilst publishing: $ErrorMessage" -ForeGroundColor Red
+    Write-Host "Exception occured whilst publishing: $ErrorMessage" -ForegroundColor Red
 }

@@ -26,5 +26,5 @@ try {
 }
 catch {
     $ErrorMessage = $_.Exception.Message
-    Write-Host "Exception occured during build process: $ErrorMessage" -ForeGroundColor Red
+    Write-Host "Exception occured during build process: $ErrorMessage" -ForegroundColor Red
 }
